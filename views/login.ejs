@@ -15,14 +15,14 @@
 
 
 
-    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="shortcut icon" type="image/png" href="/assets/images/logo.png">
 </head>
 
-<body class="login-body">
+<body id="login-body">
 
-    <form class="login-form" action="/login" method="post">
-        <div class='login-wrapper'>
+    <form id="login-form" action="/login" method="post">
+        <div id='login-wrapper'>
             <!-- show any messages that come back with authentication -->
             <% if (message.length > 0) { %>
                 <div class="alert alert-danger">
@@ -32,8 +32,8 @@
 
                     <input type="text" placeholder="Email" name="email" id="email" />
                     <input type="password" placeholder="Password" name="password" id="password" />
-                    <a class="a-login-form-btn" href="/todos"><button class="login-form-btn" type="submit"> Login </button></a>
-                    <div class="login-link">
+                    <a id="a-login-form-btn" href="/todos"><button id="login-form-btn" type="submit"> Login </button></a>
+                    <div id="login-link">
                         <a class="signup-btn-link" href="/signup">Signup</a>
                         <a class="forgot-password-btn-link" href="/password-recovery">Forgot Password</a>
                     </div>

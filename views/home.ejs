@@ -5,14 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Document</title>
 </head>
 
 <body>
-    <div id="root"> </div>
 
+    <input id="data" type="hidden" value="<%= data %>" />
+    <div id="header">
+        <div id="header-title">
+            <p id="header-p"></p>
+        </div>
+        <div id="logout">
+            <a href="/logout">
+                <i class="icon ion-md-log-out"></i>
+            </a>
+        </div>
+    </div>
+    <div id="root">  </div>
+    <div id="navigation">
+        <div class="home" id="ios-home">
+            <i class="icon ion-md-home"></i>
+        </div>
+        <div class="jobs">
+            <i class="icon ion-md-list"></i>
+        </div>
+        <div class="clients">
+            <i class="icon ion-md-bookmarks"></i>
+        </div>
+        <div class="settings">
+            <i class="icon ion-md-settings"></i>
+        </div>
+    </div>
+    <script src="assets/js/index.js"></script>
 </body>
 
 </html>

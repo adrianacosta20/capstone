@@ -1,11 +1,13 @@
+const Clients = require('../models/clients');
+
 module.exports = function (app, db) {
 
     app.get('/', function (req, res) {
         if (req.user) {
-          res.redirect('/home');
+            res.redirect('/home');
         }
         else {
-          res.render('index.ejs');      
+            res.render('index.ejs');
         };
     });
 
@@ -17,12 +19,47 @@ module.exports = function (app, db) {
         res.render('signup.ejs', { message: req.flash('signupMessage') });
     });
 
+    // app.get('/home', isLoggedIn, function (req, res) {
+    //     Clients.find({}, function (err, clients) {
+    //         res.render('home.ejs', {
+    //             message: req.flash('signupMessage'),
+    //             user: req.user,
+    //             clients: clients
+    //         });
+    //     });
+
+    // });
+
     app.get('/home', isLoggedIn, function (req, res) {
-        res.render('home.ejs', {
-            message: req.flash('signupMessage'),
-            user: req.user 
-        });
+        Clients.find({}, function (err, data) {
+            if (err) {
+                console.log(err);
+            };
+            if (data) {
+                res.render('home.ejs', {
+                    data: JSON.stringify(data),
+                    message: req.flash('signupMessage'),
+                    user: req.user
+                })
+            }
+        })
     });
+
+    app.post("/new-client", isLoggedIn, (req, res) => {
+        // var newClient = new Clients(req.body);
+        // newClient.save({},function(err, newClient){
+        //     if(err){
+        //         console.log(err)
+        //     };
+        //     if(newClient){
+        //         res.send("New Client Added")
+        //     };
+        // }); 
+        console.log('here',req.body);
+        res.send("Created New Client")
+    });
+
+   
 
     app.get('/logout', isLoggedIn, function (req, res) {
         req.logout();
