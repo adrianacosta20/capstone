@@ -1,4 +1,5 @@
 const Clients = require('../models/clients');
+const Jobs = require('../models/jobs');
 
 module.exports = function (app, db) {
 
@@ -19,46 +20,95 @@ module.exports = function (app, db) {
         res.render('signup.ejs', { message: req.flash('signupMessage') });
     });
 
-    // app.get('/home', isLoggedIn, function (req, res) {
-    //     Clients.find({}, function (err, clients) {
-    //         res.render('home.ejs', {
-    //             message: req.flash('signupMessage'),
-    //             user: req.user,
-    //             clients: clients
-    //         });
-    //     });
-
-    // });
-
     app.get('/home', isLoggedIn, function (req, res) {
-        Clients.find({}, function (err, data) {
+        
+            res.render('home.ejs', {
+                message: req.flash('signupMessage'),
+                user: req.user,
+            });
+    });
+
+    app.get('/get-clients', isLoggedIn, function (req, res) {
+        Clients.find({}, function (err, clients) {
             if (err) {
                 console.log(err);
             };
-            if (data) {
-                res.render('home.ejs', {
-                    data: JSON.stringify(data),
-                    message: req.flash('signupMessage'),
-                    user: req.user
-                })
-            }
-        })
+
+            res.send(clients)
+        });
+    });
+
+    app.get('/get-jobs', isLoggedIn, function (req, res) {
+        Jobs.find({}, function (err, jobs) {
+            if (err) {
+                console.log(err);
+            };
+
+            res.send(jobs)
+        });
+    });
+
+    app.post('/show-job', isLoggedIn, function(req , res){
+        console.log('>>>>', req.body);
+        Jobs.find({ _id: req.body.id }, function(err, job){
+            if(err) return console.log(err);
+            res.send(job);
+        });
+    });
+
+    app.post("/update-client", isLoggedIn, (req, res)=>{
+        console.log('>>>>>>>>', req.body);
+        Clients.updateOne({ _id: req.body.id }, { firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, phone: req.body.phone }, { new: true }, function(err, client) {
+            if(err){
+                return  console.log(err);
+            };
+            res.send({
+                success: true
+            });
+          });
     });
 
     app.post("/new-client", isLoggedIn, (req, res) => {
-        // var newClient = new Clients(req.body);
-        // newClient.save({},function(err, newClient){
-        //     if(err){
-        //         console.log(err)
-        //     };
-        //     if(newClient){
-        //         res.send("New Client Added")
-        //     };
-        // }); 
-        console.log('here',req.body);
-        res.send("Created New Client")
+        console.log('>>>>>>>>> ', req.body); 
+        var newClient = new Clients(req.body);
+        newClient.save({},function(err, newClient){
+            if(err){
+                console.log(err)
+            };
+            if(newClient){
+                res.send(newClient);
+            };
+        }); 
     });
 
+    app.post("/new-job", isLoggedIn, (req, res) => {
+        console.log('>>>>>>>>> ', req.body); 
+        var newJob = new Jobs(req.body);
+        newJob.save({},function(err, newJob){
+            if(err){
+                console.log(err)
+            };
+            if(newJob){
+                res.send(newJob);
+            };
+        }); 
+    });
+
+    app.post("/remove-client", isLoggedIn, (req,res) => {
+        console.log('>>>>>>>>>', req.body.id);
+        Clients.remove({_id: req.body.id}, function(err){
+            if(err){
+                console.log(err);
+                return res.send({
+                    success: false
+                });
+            };
+            res.send({
+                success: true
+            });
+        });
+
+    });
    
 
     app.get('/logout', isLoggedIn, function (req, res) {

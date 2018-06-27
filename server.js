@@ -3,7 +3,6 @@ var port =process.env.PORT || 8888;
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
-var bodyParser = require("body-parser");
 var session = require('express-session');
 var flash = require('connect-flash');
 var db = require('./database')();
@@ -34,7 +33,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // required for passport
 app.set('trust proxy', 1); // trust first proxy

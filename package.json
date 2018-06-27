@@ -12,6 +12,7 @@
   "dependencies": {
     "async": "^2.6.0",
     "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
     "crypto": "^1.0.1",
     "ejs": "^2.5.8",

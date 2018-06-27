@@ -188,6 +188,7 @@ a{
 #content{
     width: 100vw;
     height: 80vh;
+    overflow: auto
 }
 
 .home, .jobs, .clients, .settings{
@@ -222,9 +223,9 @@ a{
 
 }
 
-#client-name{ 
-        width: 92%;
-        height: 11%;
+/* .client-name{ 
+        min-height: 8vh;
+        width: 90vw;
         font-size: 32px;
         display: flex;
         align-items: right;
@@ -232,25 +233,25 @@ a{
         margin-left: 16px;
         margin-top: 12px;
         background-color: #f4f5f9;
-}
+} */
 
 #add-btn{
     height: 8vh;
     display: flex;
     justify-content: flex-end;
+    margin-right: 7px;
 }
 
 .ion-md-add{
     width: 20vw; 
-    margin-bottom: 15px;
 }
 
-#add-first-name,#add-last-name, #add-email, #add-phone{
+/* #add-first-name,#add-last-name, #add-email, #add-phone{
     height: 43px;
     width: 80vw;
     margin-top: 22px;
     border-radius: 5px
-}
+} */
 
 #add-form{
     display: flex;
@@ -274,4 +275,32 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.client{
+    background-color: #f4f5f9;
+    margin: 14px;
+    height: 70px;
+    font-size: 15px;
+    overflow-y: hidden;
+    transition: height 700ms ease;
+}
+
+#show{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addInfo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jobs-div{
+    width: 90vw;
+    background-color: grey;
+    height: 8vh;
+    margin-left: 5vw;
 }
