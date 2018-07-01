@@ -1,9 +1,15 @@
 body{
-    margin: 0
+    margin: 0;
+    font-family: 'Muli', sans-serif;
 }
 
 a{
     text-decoration: none
+}
+
+input{
+    font-size: 24px;
+
 }
 
 #index-body{
@@ -171,6 +177,7 @@ a{
     border-width: thin;
     font-size: 50px; 
     background-color: #f4f5f9;
+    box-sizing: border-box;
 }
 
 #navigation{
@@ -182,6 +189,19 @@ a{
     background-color: #f4f5f9;
     border-top: 1px solid black;
     border-width: thin;
+    box-sizing: border-box;
+}
+
+#navigation2{
+    display: flex;
+    background-color: #f4f5f9;
+    border-top: 1px solid black;
+    border-width: thin;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: 100vh;
+    flex-wrap: wrap;
+    width: 100vw;
     
 }
 
@@ -191,10 +211,21 @@ a{
     overflow: auto
 }
 
+#content2{
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+}
+
 .home, .jobs, .clients, .settings{
     display: flex;
     flex: 1;
     height: 100%;
+}
+
+.home2, .jobs2, .clients2, .settings2{
+    height: 50vh;
+    width: 50vw;
 }
 
 .icon{
@@ -206,9 +237,32 @@ a{
     color: black
 }
 
+.icon2{
+    font-size: 165px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: black
+}
+
+
+
 
 #header-p{ 
-    margin-left: 10px;
+    font-size: 52px;
+    width: 100%;
+    height: 58px;
+}
+
+#home-header-p{
+    font-size: 40px;
+    text-align: center;
+    width: 100%;
+}
+
+#header-title{
+    width: 100%;
 }
 
 .ion-md-log-out{
@@ -221,6 +275,12 @@ a{
     display: flex;
     flex-direction: column;
 
+}
+
+#root2{
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
 }
 
 /* .client-name{ 
@@ -257,6 +317,7 @@ a{
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
 }
 
 #add-form-btns{
@@ -264,26 +325,53 @@ a{
     width: 100vw;
     display: flex;
     justify-content: space-evenly;
-    font-size: 24px;
+    flex-direction: column;
+    align-items: center;
+    height: 30vh;
+
 }
 
 #add-form-add-btn, #add-form-back-btn{
-    border: 1px solid black;
-    border-radius: 10px;
+   border: 1px solid black;
     width: 20vw;
-    height: 6vh; 
+    height: 6vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white;
+    font-size: 25px
+}
+
+#jobs-form-back-btn, #jobs-form-add-btn{
+    justify-content: center;
+    border: 1px solid black;
+    background-color: white;
+    font-size: 30px;
+    margin-bottom: 19px;
+    width: 100px;
+    height: 49px;
+    display: flex;
+    align-items: center;
+}
+
+.remove, .back-btn{
+    justify-content: center;
+    border: 1px solid black;
+    background-color: white;
+    font-size: 30px;
+    margin-bottom: 35px;
+    width: 120px;
+    display: flex;
+    align-items: center;
 }
 
 .client{
-    background-color: #f4f5f9;
-    margin: 14px;
-    height: 70px;
-    font-size: 15px;
-    overflow-y: hidden;
-    transition: height 700ms ease;
+       margin: 14px;
+       height: 70px;
+       font-size: 15px;
+       overflow-y: hidden;
+       transition: height 700ms ease;
+       background-color: #f4f5f9
 }
 
 #show{
@@ -294,7 +382,6 @@ a{
 
 .addInfo{
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -302,5 +389,155 @@ a{
     width: 90vw;
     background-color: grey;
     height: 8vh;
-    margin-left: 5vw;
+    display: flex;
+    margin: 17px;
+    background-color: #f4f5f9;
+    justify-content: center;
+    align-items: center;
+}
+
+#img-container{
+    max-width: 200px;
+    max-height: 200px
+}
+
+#img-source{
+    width: 200px;
+}
+
+#settings-container{
+    height: 13vh;
+    width: 96vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #f4f5f9;
+    margin: 8px;
+}
+
+#logout-atag{
+    margin-left: 20px;
+    font-size: 29px;
+    text-decoration: none;
+    color: black
+}
+
+#logout-atag:hover{
+    text-decoration: none;
+    color: black
+}
+
+#add-first-name, #add-last-name, #add-phone, #add-email{
+    margin-top: 23px;
+    border-width: 1px;
+    height: 50px;
+    width: 75vw;
+
+}
+
+#jobs-model, #jobs-owner, #jobs-description, #jobs-image{
+    margin-top: 23px;
+    border-width: 1px;
+    height: 50px;
+    width: 75vw;
+
+}
+
+#first-last-name{
+    margin-left: 12px;
+}
+
+
+
+.drop-down-arrow{
+    width: 50px;
+    height: 52px;
+}
+
+#email-phone{
+    flex: 6;
+}
+
+#remove, #update{
+    flex: 1;
+    height: 45px;
+    font-size: 30px;
+    text-align: center;
+}
+
+#remove{
+    margin-right: 20px
+}
+
+#client-email, #client-phone{
+    height: 22px;
+    margin: 10px;
+    font-size: 19px;
+}
+
+.ion-md-trash, .ion-md-create{
+    font-size: 40px;
+} 
+
+#jobs-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+#jobs-form-btns{
+    width: 80vw;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-job{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+
+#model, #owner{
+    margin: 14px;
+    width: 80vw;
+    font-size: 40px;
+    text-align: center;
+}
+
+#description{
+    margin: 14px;
+    width: 80vw;
+    font-size: 24px;
+    text-align: center;
+}
+
+#image-container{
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto; 
+    min-height: 250px;
+    max-height: 250px;
+}
+
+#img-source{
+    width: 100%;
+    height: 211px;
+    margin: 20px;
+}
+
+#btns{
+    width: 70vw;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 31px;
+    margin-bottom: 31px;
 }

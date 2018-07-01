@@ -6,7 +6,10 @@ var jobsSchema = mongoose.Schema({
     model: { type: String, trim: true },
     dateCompleted: { type: Date },
     owner: { type: String, trim: true },
-    description: { type: String }
+    description: { type: String },
+    files: [{
+        name: String
+    }]
 });
 
 module.exports = mongoose.model('Jobs', jobsSchema);

@@ -8,10 +8,12 @@ var flash = require('connect-flash');
 var db = require('./database')();
 var morgan = require('morgan');
 var passport = require('passport');
+var formidable = require('formidable');
+var path = require('path');
 
 require('./app/passport')(passport, db);
 
-app.use(morgan('dev')); 
+app.use(morgan('dev'));  
 app.set('view engine', 'ejs'); 
 
 app.use(function (req, res, next) {
@@ -55,9 +57,10 @@ app.use(passport.session()); // persistent login sessions
 
 app.use("/assets", express.static(__dirname + "/assets"));
 
+global.rootDir = path.resolve(__dirname);
+
 require('./app/routes')(app, passport, db);
 
 app.listen(port);
 
 console.log("Server listening on port " + port);
-
